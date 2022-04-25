@@ -1,4 +1,4 @@
-package games.acdirican.angrychickens;
+package games.acdirican.pissedchickens;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,14 +6,14 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import games.acdirican.angrychickens.entities.AngryChicken;
-import games.acdirican.angrychickens.entities.CirclerObject;
-import games.acdirican.angrychickens.entities.IGameObject;
-import games.acdirican.angrychickens.entities.Point;
-import games.acdirican.angrychickens.entities.RectObject;
-import games.acdirican.angrychickens.resources.Chicken;
-import games.acdirican.angrychickens.resources.Fox;
-import games.acdirican.angrychickens.resources.Sound;
+import games.acdirican.pissedchickens.entities.AngryChicken;
+import games.acdirican.pissedchickens.entities.CirclerObject;
+import games.acdirican.pissedchickens.entities.IGameObject;
+import games.acdirican.pissedchickens.entities.Point;
+import games.acdirican.pissedchickens.entities.RectObject;
+import games.acdirican.pissedchickens.resources.Chicken;
+import games.acdirican.pissedchickens.resources.Fox;
+import games.acdirican.pissedchickens.resources.Sound;
 import stdaudio.StdAudio;
 import stddraw.StdDraw;
 

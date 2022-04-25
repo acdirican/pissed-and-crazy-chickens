@@ -1,4 +1,4 @@
-package games.acdirican.angrychickens.entities;
+package games.acdirican.pissedchickens.entities;
 
 import java.awt.event.KeyEvent;
 import stddraw.StdDraw;

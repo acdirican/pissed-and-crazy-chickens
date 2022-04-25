@@ -1,4 +1,4 @@
-package games.acdirican.angrychickens;
+package games.acdirican.pissedchickens;
 import stddraw.StdDraw;
   
 //javadoc
@@ -8,10 +8,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import games.acdirican.angrychickens.entities.AngryChicken;
-import games.acdirican.angrychickens.entities.CirclerObject;
-import games.acdirican.angrychickens.entities.IGameObject;
-import games.acdirican.angrychickens.entities.RectObject;
+import games.acdirican.pissedchickens.entities.AngryChicken;
+import games.acdirican.pissedchickens.entities.CirclerObject;
+import games.acdirican.pissedchickens.entities.IGameObject;
+import games.acdirican.pissedchickens.entities.RectObject;
 
 /**
  * Pissed and crazy chickens against Foxes. :-)

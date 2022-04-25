@@ -1,4 +1,4 @@
-package games.acdirican.angrychickens;
+package games.acdirican.pissedchickens;
 
 /**
  * Pissed and crazy chickens against Foxes. :-)

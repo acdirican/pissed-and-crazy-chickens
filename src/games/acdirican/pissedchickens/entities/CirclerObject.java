@@ -1,8 +1,8 @@
-package games.acdirican.angrychickens.entities;
+package games.acdirican.pissedchickens.entities;
 
 import java.awt.Color;
 
-import games.acdirican.angrychickens.Utils;
+import games.acdirican.pissedchickens.Utils;
 import stddraw.StdDraw;
 
 /**

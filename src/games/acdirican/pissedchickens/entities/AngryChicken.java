@@ -1,9 +1,9 @@
-package games.acdirican.angrychickens.entities;
+package games.acdirican.pissedchickens.entities;
 
 import java.awt.Color;
 
-import games.acdirican.angrychickens.resources.Chicken;
-import games.acdirican.angrychickens.resources.Sound;
+import games.acdirican.pissedchickens.resources.Chicken;
+import games.acdirican.pissedchickens.resources.Sound;
 
 /**
  * Pissed chikens againts Foxes. :-)

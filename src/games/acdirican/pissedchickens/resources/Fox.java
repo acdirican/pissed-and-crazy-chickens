@@ -1,6 +1,6 @@
-package games.acdirican.angrychickens.resources;
+package games.acdirican.pissedchickens.resources;
 
-import games.acdirican.angrychickens.Game;
+import games.acdirican.pissedchickens.Game;
 
 /**
  * Pissed and crazy chickens against Foxes. :-)
