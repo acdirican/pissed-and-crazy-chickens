@@ -30,7 +30,7 @@ public class Game {
 	/*
 	 * Some image resources
 	 */
-	public static final String RESOURCES = "resources/";
+	public static final String RESOURCES = "/";
 	private static final String START_IMAGE = RESOURCES + "poster.jpg";
 	private static String BACK_IMAGE =RESOURCES + "background1.png" ;
 	private static String COLUMN = RESOURCES  + "column1.png";

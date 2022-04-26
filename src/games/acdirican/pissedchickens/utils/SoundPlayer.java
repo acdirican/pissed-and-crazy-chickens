@@ -25,13 +25,15 @@ public class SoundPlayer extends Thread{
 	
 	public void run() {
 		try {
-			audioStream = AudioSystem.getAudioInputStream(new File(fileName));
+			//audioStream = AudioSystem.getAudioInputStream(new File(fileName));
+			audioStream = AudioSystem.getAudioInputStream(getClass().getResource(fileName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
 			sourceLine = (SourceDataLine) AudioSystem
 					.getLine(new DataLine.Info(SourceDataLine.class, audioStream.getFormat()));
+			
 			sourceLine.open(audioStream.getFormat());
 		} catch (LineUnavailableException e) {
 			e.printStackTrace();
