@@ -35,7 +35,7 @@ public enum Fox {
 	}
 	
 	public static Fox random() {
-		int i = (int) (Math.random() * Chicken.values().length);
+		int i = (int) (Math.random() * Fox.values().length);
 		return Fox.values()[i];
 	}
 }

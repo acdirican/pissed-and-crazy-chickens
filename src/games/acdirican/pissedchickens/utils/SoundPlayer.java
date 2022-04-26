@@ -29,6 +29,7 @@ public class SoundPlayer extends Thread{
 			audioStream = AudioSystem.getAudioInputStream(getClass().getResource(fileName));
 		} catch (Exception e) {
 			e.printStackTrace();
+			return;
 		}
 		try {
 			sourceLine = (SourceDataLine) AudioSystem

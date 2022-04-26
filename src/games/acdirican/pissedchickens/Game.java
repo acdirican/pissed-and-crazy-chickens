@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import games.acdirican.pissedchickens.entities.AngryChicken;
 import games.acdirican.pissedchickens.entities.CirclerObject;
@@ -15,6 +16,7 @@ import games.acdirican.pissedchickens.resources.Chicken;
 import games.acdirican.pissedchickens.resources.Fox;
 import games.acdirican.pissedchickens.resources.Sound;
 import games.acdirican.pissedchickens.utils.SoundPlayer;
+import games.acdirican.pissedchickens.utils.Utils;
 import stddraw.StdDraw;
 
 /**
@@ -26,7 +28,7 @@ import stddraw.StdDraw;
  *
  */
 public class Game {
-	
+
 	/*
 	 * Some image resources
 	 */
@@ -66,7 +68,7 @@ public class Game {
 	/*
 	 * FOX number to eliminate.
 	 */
-	private int targetCount;
+	private int numberOfFoxes;
 	
 	/**
 	 * Draw the shooting trajectýry or not
@@ -82,7 +84,6 @@ public class Game {
 		
 		this.width = width;
 		this.height = height;
-
 		this.angle=Math.PI/4;
 		this.velocity=160;
 		
@@ -91,21 +92,46 @@ public class Game {
 	private ArrayList<IGameObject> createObjectsAndCharacters() {
 		objects = new  ArrayList<IGameObject>();
 		
-		objects.add(new RectObject(400,300, StdDraw.CYAN,40,250, COLUMN));
-		objects.add(new RectObject(600, 60, StdDraw.BLACK,40,120,COLUMN));
-		objects.add(new RectObject(750,150,StdDraw.GREEN,100,300, COLUMN));
-		objects.add(new RectObject(1000,370,StdDraw.BLACK,80,350, COLUMN));
-		objects.add(new RectObject(1175,100,StdDraw.GREEN,100,200, COLUMN));
+		int x =Utils.randomBetween(300,400);
+		objects.add(new RectObject(x,200, StdDraw.CYAN,40,150, COLUMN));
+		objects.add(new CirclerObject(x, 302, StdDraw.RED, 30, true, Fox.BOXY.imageName()));
 		
-		objects.add(new CirclerObject(400, 452, StdDraw.RED, 30, true, Fox.BOXY.imageName()));
-		objects.add(new CirclerObject(750,335,StdDraw.RED,40, true, Fox.FOXY.imageName()));
-		objects.add(new CirclerObject(600, 160, StdDraw.RED, 40, true, Fox.TOXY.imageName()));
-		objects.add(new CirclerObject(1000, 575, StdDraw.RED, 40, true, Fox.SOXY.imageName()));
-		objects.add(new CirclerObject(1175, 237, StdDraw.RED, 40, true, Fox.BOXY.imageName()));
+		x =Utils.randomBetween(450,600);
+		objects.add(new RectObject(x, 60, StdDraw.BLACK,40,80,COLUMN));
+		objects.add(new CirclerObject(x, 120, StdDraw.RED, 40, true, Fox.TOXY.imageName()));
+		
+		x =Utils.randomBetween(650,750);
+		objects.add(new RectObject(x,150,StdDraw.GREEN,100,300, COLUMN));
+		objects.add(new CirclerObject(x,335,StdDraw.RED,40, true, Fox.FOXY.imageName()));
+		
+		x =Utils.randomBetween(800,950);
+		objects.add(new RectObject(x,370,StdDraw.BLACK,80,350, COLUMN));
+		objects.add(new CirclerObject(x, 575, StdDraw.RED, 40, true, Fox.SOXY.imageName()));
+		
+		x =Utils.randomBetween(1050,1200);
+		objects.add(new RectObject(x,100,StdDraw.GREEN,100,200, COLUMN));
+		objects.add(new CirclerObject(x, 237, StdDraw.RED, 40, true, Fox.BOXY.imageName()));
 		
 		return objects;
 	}
 
+	private ArrayList<IGameObject> createObjectsAndCharacters2() {
+		objects = new  ArrayList<IGameObject>();
+		
+		for (int i = 0; i < numberOfFoxes; i++) {
+			int bx = 200 + Utils.RND.nextInt(width-50);
+			int by = Utils.RND.nextInt(250);
+			int bw = 30 + Utils.RND.nextInt(70);
+			int bh = 30 + Utils.RND.nextInt(400);
+			objects.add(new RectObject(bx,by, StdDraw.CYAN,bw,bh, COLUMN));
+			//objects.add(new CirclerObject(400, 452, StdDraw.RED, 30, true, Fox.random().imageName()));
+		}
+		
+
+		
+		return objects;
+	}
+	
 	public void init() {
 		StdDraw.setCanvasSize(1000, 700);
 		StdDraw.setXscale(0, 1000);
@@ -128,7 +154,7 @@ public class Game {
 	public void startGame() {
 		setupFrame();
 		createObjectsAndCharacters();
-		targetCount = 5;
+		numberOfFoxes = 5;
 		playAudio(Sound.ROOSTER1);
 		play();
 		gameOver();
@@ -183,12 +209,14 @@ public class Game {
 			if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
 				playAudio(chiken.getVoice());
 				int hitCount = shoot(vx, vy, bx, by, x, y, t);
-				if (hitCount == 0) {
-					playAudio(Sound.FALL);
+				if (hitCount != 0) {
+					if (hitCount == -1 ) {
+						playAudio(Sound.FALL);
+					}
 					fall();
 				}
-				targetCount -= hitCount;
-				if (targetCount == 0) {
+				numberOfFoxes -= hitCount;
+				if (numberOfFoxes == 0) {
 					break;
 				}
 				chiken = new AngryChicken(x0, y0, Color.MAGENTA, 50, Chicken.random());
@@ -293,30 +321,24 @@ public class Game {
 			x = p.getX();
 			y = p.getY();
 			
-			boolean blockHit = false;
+			boolean hit = false;
 			for (int i = 0; i < objects.size(); i++) {
 				if (objects.get(i).hit(x, y)) {
 					if (objects.get(i).isTarget()) {
 						playAudio(Sound.BOMB);
 						objects.remove(i);
-						hitCount++;
+						return 1;
 					}
-					else {
-						blockHit = true;
-					}
-					break;
+					//block hit
+					return -1;
 				}
 			}
 			
-			if (blockHit) {
-				return hitCount;
-			}
 			drawBackground();
 			replaceObjects();
 
 			chiken.setX(x);
 			chiken.setY(y);
-
 			chiken.draw(true);
 
 			StdDraw.show();
