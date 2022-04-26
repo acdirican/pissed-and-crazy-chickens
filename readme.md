@@ -1,4 +1,4 @@
-# pissed-and-crazy-chikens
+# Pissed and Crazy Chikens
 
 Sice the beginning, Chickens have been tormented and murdered by Foxes, even their younglings, babies or chicks. 
 
