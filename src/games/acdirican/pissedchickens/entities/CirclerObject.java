@@ -2,7 +2,7 @@ package games.acdirican.pissedchickens.entities;
 
 import java.awt.Color;
 
-import games.acdirican.pissedchickens.Utils;
+import games.acdirican.pissedchickens.utils.Utils;
 import stddraw.StdDraw;
 
 /**

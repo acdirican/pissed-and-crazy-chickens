@@ -14,7 +14,7 @@ import games.acdirican.pissedchickens.entities.RectObject;
 import games.acdirican.pissedchickens.resources.Chicken;
 import games.acdirican.pissedchickens.resources.Fox;
 import games.acdirican.pissedchickens.resources.Sound;
-import stdaudio.StdAudio;
+import games.acdirican.pissedchickens.utils.SoundPlayer;
 import stddraw.StdDraw;
 
 /**
@@ -72,6 +72,11 @@ public class Game {
 	 * Draw the shooting trajectýry or not
 	 */
 	private boolean drawTrajectory = true;
+	
+	/**
+	 * 
+	 */
+	private SoundPlayer player =  new SoundPlayer();
 	
 	public Game(int width, int height) {
 		
@@ -222,8 +227,10 @@ public class Game {
 
 	}
 
-	private void playAudio(Sound voice) {
-		StdAudio.play(voice.getFilePath());		
+	@SuppressWarnings("deprecation")
+	private void playAudio(Sound sound) {
+		//StdAudio.play(voice.getFilePath());	
+		new SoundPlayer().playSound(sound.getFilePath());
 	}
 
 	private void drawTrajectory() {

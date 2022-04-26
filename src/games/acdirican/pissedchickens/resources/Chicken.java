@@ -12,13 +12,13 @@ import games.acdirican.pissedchickens.Game;
  */
 public enum Chicken {
 	CRAZY("crazy", Sound.ROOSTER2),
-	CUTEY("cutey", Sound.CHIK),
-	EGGY("EGGY", Sound.CHIK),
+	CUTEY("cutey", Sound.CHICK),
+	EGGY("EGGY", Sound.CHICK),
 	FEARY("feary", Sound.ROOSTER3),
-	HUMPY("humpy", Sound.CHIKEN1),
+	HUMPY("humpy", Sound.CHICKEN1),
 	POINTY("pointy", Sound.ROOSTER1),
-	SMARTY("smarty", Sound.CHIK),
-	STRONGY("strongy", Sound.CHIKEN2);
+	SMARTY("smarty", Sound.CHICK),
+	STRONGY("strongy", Sound.CHICKEN2);
 	
 
 	private String name;

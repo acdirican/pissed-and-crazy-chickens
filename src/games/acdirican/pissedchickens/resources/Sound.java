@@ -14,9 +14,9 @@ public enum Sound {
 	ROOSTER1("rooster1"),
 	ROOSTER2("rooster2"),
 	ROOSTER3("rooster3"),
-	CHIKEN1("chiken1"),
-	CHIKEN2("chiken2"),
-	CHIK("chik"),
+	CHICKEN1("chiken1"),
+	CHICKEN2("chiken2"),
+	CHICK("chick"),
 	BOMB("bomb"), 
 	FALL("fall"), 
 	APPLAUSE("applause");
