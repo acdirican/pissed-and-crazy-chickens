@@ -191,26 +191,24 @@ public class Game {
 
 		chiken = new AngryChicken(x0, y0, Color.MAGENTA, 50, Chicken.random());
 
-
-
 		double bx, by;
 
 		while (StdDraw.isKeyPressed(KeyEvent.VK_Q) == false) {
 			bx = x0 + Math.cos(angle) * velocity;
 			by = y0 + Math.sin(angle) * velocity;
-			
+
 			if (StdDraw.isKeyPressed(KeyEvent.VK_T)) {
 				drawTrajectory = !drawTrajectory;
 			}
-			
+
 			setShooter();
 			drawScene(x0, y0, bx, by);
-					
+
 			if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
 				playAudio(chiken.getVoice());
 				int hitCount = shoot(vx, vy, bx, by, x, y, t);
 				if (hitCount != 0) {
-					if (hitCount == -1 ) {
+					if (hitCount == -1) {
 						playAudio(Sound.FALL);
 					}
 					fall();
